@@ -11,12 +11,15 @@ class QuizEvent extends Model
 
     protected $fillable=[
         'quiz_date',
-        'subject',
-        'number_of_questions'
+        'topic'
     ];
 
     public function season(){
         return $this->belongsTo(Season::class);
+    }
+
+    public function statistics(){
+        return $this->hasMany(Statistic::class);
     }
 
 }

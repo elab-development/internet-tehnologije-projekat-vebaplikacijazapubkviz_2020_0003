@@ -48,4 +48,8 @@ class Team extends Authenticatable
         return $this->hasMany(Scoreboard::class);
     }
 
+    
+    public function statistics(){
+        return $this->hasMany(Statistic::class);
+    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->date('quiz_date');
             $table->string('subject');
-            $table->integer('number_of_questions');
+            
             $table->foreign('season_id')->references('id')->on('seasons');
             $table->primary(['quiz_event_id','season_id']);
 

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->unsignedBigInteger('season_id');
             $table->unsignedBigInteger('team_id');
 
-            $table->integer('correct_total');
-            $table->integer('incorrect_total');
-            $table->integer('index');
+            $table->integer('correct_total')->default(0);
+            $table->integer('incorrect_total')->default(0);
+            $table->integer('index')->default(0);
 
             $table->foreign('season_id')->references('id')->on('seasons');
             $table->foreign('team_id')->references('id')->on('teams');
