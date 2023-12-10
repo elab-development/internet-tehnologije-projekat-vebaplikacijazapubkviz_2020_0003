@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Season extends Model
+class QuizEvent extends Model
 {
     use HasFactory;
-    
+
     protected $fillable=[
-        'name',
-        'start_date',
-        'finish_date'
+        'quiz_date',
+        'subject',
+        'number_of_questions'
     ];
 
-    public function quiz_events(){
-        return $this->hasMany(QuizEvent::class);
+    public function season(){
+        return $this->belongsTo(Season::class);
     }
 
 }
