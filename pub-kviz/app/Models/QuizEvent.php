@@ -11,7 +11,7 @@ class QuizEvent extends Model
 
     protected $fillable=[
         'quiz_date',
-        'topic',
+        'subject',
         'number_of_questions'
     ];
 
