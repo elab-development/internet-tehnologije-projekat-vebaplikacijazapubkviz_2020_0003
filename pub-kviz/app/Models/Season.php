@@ -19,4 +19,8 @@ class Season extends Model
         return $this->hasMany(QuizEvent::class);
     }
 
+    public function scoreboards(){
+        return $this->hasMany(Scoreboard::class);
+    }
+
 }

@@ -43,4 +43,9 @@ class Team extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scoreboards(){
+        return $this->hasMany(Scoreboard::class);
+    }
+
 }
