@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('teams', function (Blueprint $table) {
             //
         });
 
-        Schema::rename('users','teams');
+        
+        Schema::rename('teams','users');
     }
 
     /**
@@ -23,11 +24,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('teams', function (Blueprint $table) {
             //
         });
         
-        Schema::rename('teams','users');
+        Schema::rename('users','teams');
     }
-    
 };

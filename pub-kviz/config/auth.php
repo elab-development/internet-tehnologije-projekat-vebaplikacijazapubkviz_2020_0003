@@ -60,9 +60,9 @@ return [
     */
  
     'providers' => [
-        'teams' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Team::class,
+            'model' => App\Models\User::class,
         ],
  
         // 'users' => [
@@ -91,8 +91,8 @@ return [
     */
  
     'passwords' => [
-        'teams' => [
-            'provider' => 'teams',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

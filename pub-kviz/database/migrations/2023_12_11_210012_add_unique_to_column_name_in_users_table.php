@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('name')->unique()->change();
         });
-
-        Schema::rename('users','teams');
     }
 
     /**
@@ -25,9 +24,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropUnique();
         });
-        
-        Schema::rename('teams','users');
     }
-    
 };

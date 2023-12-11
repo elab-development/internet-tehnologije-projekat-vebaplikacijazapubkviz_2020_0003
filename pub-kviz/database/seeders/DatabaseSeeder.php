@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use \App\Models\Team;
+use \App\Models\User;
 use \App\Models\Season;
 use \App\Models\QuizEvent;
 use \App\Models\Statistic;
@@ -18,18 +18,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {  
         //Season::truncate();
-        // Team::truncate();
+        // User::truncate();
         //QuizEvent::truncate();
         // Scoreboard::truncate();
         // Statistic::truncate();
  
         $season = Season::factory()->create();
-        $team = Team::factory()->create();
+        $user = User::factory()->create();
         $quiz_event = QuizEvent::factory()->create();
        
         Scoreboard::create([
             'season_id' => $season->id,
-            'team_id' => $team->id,
+            'user_id' => $user->id,
             'correct_total' => 0,
             'incorrect_total' => 0,
             'index' => 0,
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         Statistic::create([
             'quiz_event_id' => $quiz_event->quiz_event_id,
             'season_id'=>$quiz_event->season_id,
-            'team_id' => $team->id,
+            'user_id' => $user->id,
             'correct' => 7,
             'incorrect' => 8,
         ]);

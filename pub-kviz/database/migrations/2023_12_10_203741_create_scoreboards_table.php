@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('scoreboards', function (Blueprint $table) {
             $table->unsignedBigInteger('season_id');
-            $table->unsignedBigInteger('team_id');
+            $table->unsignedBigInteger('user_id');
 
             $table->integer('correct_total')->default(0);
             $table->integer('incorrect_total')->default(0);
             $table->integer('index')->default(0);
 
             $table->foreign('season_id')->references('id')->on('seasons');
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('user_id')->references('id')->on('teams');
 
-            $table->primary(['season_id','team_id']);
+            $table->primary(['season_id','user_id']);
             $table->timestamps();
         });
     }
