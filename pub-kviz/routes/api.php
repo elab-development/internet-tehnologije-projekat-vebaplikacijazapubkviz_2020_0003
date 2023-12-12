@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
-
+ 
+use \App\Http\Controllers\SeasonController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,9 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/users',[UserController::class,'index']);
+//Route::get('/users',[UserController::class,'index']);
 Route::get('/users/{id}',[UserController::class,'show']);
-
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
+//Resurs ruta:
+Route::resource('users',UserController::class);
+Route::resource('seasons',SeasonController::class);
 
+//Route::get('/seasons', [SeasonController::class, 'index' ]);
+Route::get('/seasons/{id}', [SeasonController::class, 'show' ]);
+Route::delete('/seasons/{id}', [SeasonController::class, 'destroy']);
 
