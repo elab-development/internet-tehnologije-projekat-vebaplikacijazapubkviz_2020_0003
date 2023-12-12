@@ -19,9 +19,15 @@ return new class extends Migration
             $table->integer('correct');
             $table->integer('incorrect');
 
-            $table->foreign('season_id')->references('season_id')->on('quiz_events');
-            $table->foreign('quiz_event_id')->references('quiz_event_id')->on('quiz_events');
-            $table->foreign('user_id')->references('id')->on('teams');
+            $table->foreign('season_id')->references('season_id')->on('quiz_events')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');;
+            $table->foreign('quiz_event_id')->references('quiz_event_id')->on('quiz_events')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('teams')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');;
 
             $table->primary(['season_id','quiz_event_id','user_id']);
             $table->timestamps();

@@ -19,8 +19,12 @@ return new class extends Migration
             $table->integer('incorrect_total')->default(0);
             $table->integer('index')->default(0);
 
-            $table->foreign('season_id')->references('id')->on('seasons');
-            $table->foreign('user_id')->references('id')->on('teams');
+            $table->foreign('season_id')->references('id')->on('seasons')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('teams')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             $table->primary(['season_id','user_id']);
             $table->timestamps();

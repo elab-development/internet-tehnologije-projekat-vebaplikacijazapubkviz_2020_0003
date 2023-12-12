@@ -18,7 +18,9 @@ return new class extends Migration
             $table->date('quiz_date');
             $table->string('subject');
             
-            $table->foreign('season_id')->references('id')->on('seasons');
+            $table->foreign('season_id')->references('id')->on('seasons')->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');;
             $table->primary(['quiz_event_id','season_id']);
 
             $table->timestamps();
