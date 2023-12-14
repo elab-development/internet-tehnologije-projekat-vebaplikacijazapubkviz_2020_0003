@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('teams', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('number_of_members')->after('name');
+            
+            $table->dropColumn('number_of_members');
         });
     }
 
@@ -22,9 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('teams', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-           $table->dropColumn('number_of_members');
+            $table->integer('number_of_members')->after('name');
         });
     }
 };

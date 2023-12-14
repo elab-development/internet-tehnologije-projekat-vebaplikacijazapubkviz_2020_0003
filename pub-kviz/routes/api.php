@@ -6,6 +6,8 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\SeasonController;
 use \App\Http\Controllers\QuizEventController;
 use \App\Http\Controllers\SeasonQuizEventController;
+use \App\Http\Controllers\API\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,3 +43,7 @@ Route::resource('quiz_events',QuizEventController::class);
 // Route::put('/seasons/{name}/quiz_events/{topic}/edit', [QuizEventController::class, 'edit']);
 
 Route::put('seasons/{id}',[SeasonController::class,'update']);
+
+
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login', [AuthController::class, 'login']);

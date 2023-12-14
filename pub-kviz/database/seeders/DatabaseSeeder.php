@@ -9,7 +9,7 @@ use \App\Models\Season;
 use \App\Models\QuizEvent;
 use \App\Models\Statistic;
 use \App\Models\Scoreboard;
-
+use \App\Models\Member;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
  
         $season = Season::factory()->create();
         $user = User::factory()->create();
+        $members=Member::factory(3)->create();
         $quiz_event = QuizEvent::factory()->create();
        
         Scoreboard::create([

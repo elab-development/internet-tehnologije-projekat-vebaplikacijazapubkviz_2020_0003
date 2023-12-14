@@ -17,7 +17,7 @@ class SeasonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->word(),
         'start_date' => fake()->dateTimeBetween('-1 year', 'now'),
         'finish_date' => fake()->dateTimeBetween('now', '+1 year'),
         ];

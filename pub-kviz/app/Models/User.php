@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -19,7 +20,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'number_of_members',
         'email',
         'password',
     ];
@@ -52,4 +52,9 @@ class User extends Authenticatable
     public function statistics(){
         return $this->hasMany(Statistic::class);
     }
+
+    public function members(){
+        return $this->hasMany(Member::class);
+    }
+
 }
