@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Season;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
-use App\Http\Resources\SeasonResource;
-class SeasonController extends Controller
+
+class StatisticController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,6 @@ class SeasonController extends Controller
     public function index()
     {
         //
-        return Season::all();
     }
 
     /**
@@ -35,16 +34,15 @@ class SeasonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($season_id)
+    public function show(Statistic $statistic)
     {
         //
-        return new SeasonResource(Season::find($season_id));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Season $season)
+    public function edit(Statistic $statistic)
     {
         //
     }
@@ -52,32 +50,16 @@ class SeasonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $season_id)
+    public function update(Request $request, Statistic $statistic)
     {
         //
-        $season=Season::find($season_id);
-        $season->name=$request->input('name');
-
-        $season->update();
-        return response()->json($season);
-
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($season_id)
+    public function destroy(Statistic $statistic)
     {
         //
-        $season = Season::find($season_id);
- 
-        if (is_null($season)) {
-           
-            return response()->json('Data not found', 404);
-           
-        }
-            $season->delete();
-            return response()->json($season);
-
     }
 }
