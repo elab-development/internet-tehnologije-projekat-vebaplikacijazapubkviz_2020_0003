@@ -6,8 +6,8 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\SeasonController;
 use \App\Http\Controllers\QuizEventController;
 use \App\Http\Controllers\SeasonQuizEventController;
+use \App\Http\Controllers\MemberController;
 use \App\Http\Controllers\API\AuthController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,9 +19,9 @@ use \App\Http\Controllers\API\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 //Route::get('/users',[UserController::class,'index']);
@@ -39,11 +39,16 @@ Route::get('/seasons/{id}/quiz_events',[SeasonQuizEventController::class,'index'
 
 Route::resource('quiz_events',QuizEventController::class);
 
-
-// Route::put('/seasons/{name}/quiz_events/{topic}/edit', [QuizEventController::class, 'edit']);
-
 Route::put('seasons/{id}',[SeasonController::class,'update']);
+
 
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    
+
+    Route::post('/members/insert', [MemberController::class,'insert']);
+   
+});
