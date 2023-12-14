@@ -50,29 +50,6 @@ class QuizEventController extends Controller
     public function edit(Request $request,$topic)
     {
         //
-        $seasonsNames=array_values((array)Season::pluck('name'));
-        $quizEventTopics=array_values((array)QuizEvent::pluck('topic'));
-
-        if(!in_array($request->season,$seasonsNames)){
-            return response()->json('Season not found',404);
-        }
-        if(!in_array($topic,$quizEventTopics)){
-            return response()->json('Quiz event not found',404);
-        }
-
-
-        $season=Season::where('name',$request->season)->get()->first();
-
-        $quiz_event=QuizEvent::where('season_id','=',$season->id)->where('quiz_event_id','=',$quiz_event_id);
-        $quiz_event->topic=$request->topic;
-
-        $quiz_event->save();
-
-        return response()->json([
-            'message'=>'Quiz event updated successfully',
-            'quiz_event'=>new QuizEventResource($quiz_event),
-        ]
-        );
 
 
     }
