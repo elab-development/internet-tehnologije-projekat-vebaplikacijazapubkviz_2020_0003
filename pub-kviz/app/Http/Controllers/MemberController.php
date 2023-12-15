@@ -81,11 +81,25 @@ class MemberController extends Controller
     public function update(Request $request, $member_id)
     {
         //
+        $validator=Validator::make($request->all(),[ 
+            'first_name'=>'required|string|max:50',
+            'last_name'=>'required|string|max:50'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+
+        }
         
         $member=Member::find($member_id);
+        if (is_null($member)) {
+           
+            return response()->json('Data not found', 404);
+           
+        }
 
-        $member->first_name=$request->input('first_name');
-        $member->last_name=$request->input('last_name');
+        $member->first_name=$request->first_name;
+        $member->last_name=$request->last_name;
 
 
         $member->update();
