@@ -20,7 +20,7 @@ class MemberResource extends JsonResource
             'id'=>$this->resource->id,
             'first_name'=>$this->resource->first_name,
             'last_name'=>$this->resource->last_name,
-            'user_id'=>$this->resource->user_id
+            'user_id'=>new UserResource($this->user)
         ];
     }
 }
