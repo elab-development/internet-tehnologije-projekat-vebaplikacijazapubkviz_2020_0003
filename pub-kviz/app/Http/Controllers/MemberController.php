@@ -95,8 +95,19 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Member $member)
+    public function destroy($member_id)
     {
         //
+
+        
+        $member = Member::find($member_id);
+ 
+        if (is_null($member)) {
+           
+            return response()->json('Data not found', 404);
+           
+        }
+            $member->delete();
+            return response()->json($member);
     }
 }

@@ -56,6 +56,12 @@ class SeasonController extends Controller
     {
         //
         $season=Season::find($season_id);
+        if (is_null($season)) {
+           
+            return response()->json('Data not found', 404);
+           
+        }
+
         $season->name=$request->input('name');
 
         $season->update();
