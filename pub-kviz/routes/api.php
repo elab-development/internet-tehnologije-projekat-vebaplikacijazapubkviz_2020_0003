@@ -47,7 +47,9 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::put('/members/{id}/update', [MemberController::class, 'update']);
     
+
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/members/insert', [MemberController::class,'insert']);
    

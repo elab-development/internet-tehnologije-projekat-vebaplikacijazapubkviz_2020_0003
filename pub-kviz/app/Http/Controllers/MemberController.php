@@ -78,9 +78,18 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $member_id)
     {
         //
+        
+        $member=Member::find($member_id);
+
+        $member->first_name=$request->input('first_name');
+        $member->last_name=$request->input('last_name');
+
+
+        $member->update();
+        return response()->json($member);
     }
 
     /**
