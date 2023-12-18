@@ -46,6 +46,14 @@ Route::put('seasons/{id}',[SeasonController::class,'update']);
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::group(['middleware'=>['auth:sanctum']], function(){
+    Route::get('/user',function(Request $request){
+        return $request->user();
+    });
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
 Route::post('/upload',function (Request $request)
 {
     if ($request->hasFile('image')) {
@@ -57,11 +65,10 @@ Route::post('/upload',function (Request $request)
     return response()->json(['message'=>'Data not found']);}
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::put('/members/{id}/update', [MemberController::class, 'update']);
     Route::delete('/members/{id}/delete', [MemberController::class, 'destroy']);
 
-    Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/members/insert', [MemberController::class,'insert']);
    
 });

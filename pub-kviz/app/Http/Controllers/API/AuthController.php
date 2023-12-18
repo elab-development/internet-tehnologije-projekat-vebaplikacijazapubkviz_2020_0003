@@ -46,6 +46,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request['email']) -> firstOrFail();
+        $user->role='loggedIn';
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -58,6 +59,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        
        $request->user()->tokens()->delete();
        return response()->json(['message'=> 'Successfully logged out!']);
     }
