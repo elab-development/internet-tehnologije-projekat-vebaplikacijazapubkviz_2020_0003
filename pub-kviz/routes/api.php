@@ -8,6 +8,7 @@ use \App\Http\Controllers\QuizEventController;
 use \App\Http\Controllers\SeasonQuizEventController;
 use \App\Http\Controllers\MemberController;
 use \App\Http\Controllers\API\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,6 +45,17 @@ Route::put('seasons/{id}',[SeasonController::class,'update']);
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/upload',function (Request $request)
+{
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $name);
+        return response()->json(['message'=>'Image successfully uploaded']);
+    } else{
+    return response()->json(['message'=>'Data not found']);}
+});
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/members/{id}/update', [MemberController::class, 'update']);
