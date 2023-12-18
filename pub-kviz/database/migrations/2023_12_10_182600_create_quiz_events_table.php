@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('quiz_event_id');
             $table->unsignedBigInteger('season_id');
 
-            $table->date('quiz_date');
+            $table->dateTime('quiz_date');
             $table->string('subject');
             
             $table->foreign('season_id')->references('id')->on('seasons')->constrained()

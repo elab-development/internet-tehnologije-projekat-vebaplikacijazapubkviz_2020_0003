@@ -36,11 +36,10 @@ Route::get('/seasons/{id}', [SeasonController::class, 'show' ]);
 Route::delete('/seasons/{id}', [SeasonController::class, 'destroy']);
 
 Route::get('/seasons/{id}/quiz_events',[SeasonQuizEventController::class,'index']);
+Route::post('/export',[SeasonQuizEventController::class,'export']);
 
 Route::resource('quiz_events',QuizEventController::class);
-
 Route::put('seasons/{id}',[SeasonController::class,'update']);
-
 
 
 Route::post('/register',[AuthController::class,'register']);
