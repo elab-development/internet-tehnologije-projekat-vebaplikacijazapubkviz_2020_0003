@@ -72,3 +72,6 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::post('/members/insert', [MemberController::class,'insert']);
    
 });
+
+
+Route::post('forgot/password',[AuthController::class,'forgotPassword']);
