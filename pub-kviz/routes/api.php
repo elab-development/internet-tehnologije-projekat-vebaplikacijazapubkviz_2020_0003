@@ -7,6 +7,10 @@ use \App\Http\Controllers\SeasonController;
 use \App\Http\Controllers\QuizEventController;
 use \App\Http\Controllers\SeasonQuizEventController;
 use \App\Http\Controllers\MemberController;
+use \App\Http\Controllers\ScoreboardController;
+use \App\Http\Controllers\StatisticController;
+
+
 use \App\Http\Controllers\API\AuthController;
 
 /*
@@ -75,3 +79,4 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 
 
 Route::post('forgot/password',[AuthController::class,'forgotPassword']);
+Route::get('/scoreboards/update',[ScoreboardController::class,'update']);

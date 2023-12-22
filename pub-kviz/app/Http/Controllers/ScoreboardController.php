@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Scoreboard;
 use Illuminate\Http\Request;
+use DB;
 
 class ScoreboardController extends Controller
 {
@@ -50,9 +51,12 @@ class ScoreboardController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Scoreboard $scoreboard)
+    public function update()
     {
         //
+        //
+        DB::statement('UPDATE scoreboards sc INNER JOIN `statistics` st ON (sc.season_id=st.season_id) SET sc.correct_total=sc.correct_total+st.correct,sc.incorrect_total=sc.incorrect_total+st.incorrect,sc.index=sc.correct_total-sc.incorrect_total');
+        return response()->json(['message'=>'Successfully updated!']);
     }
 
     /**
