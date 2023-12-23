@@ -8,18 +8,21 @@ import Home from "./stranice/Home";
 import About from "./stranice/About";
 import Events from "./stranice/Events";
 import Teams from "./stranice/Teams";
+import { Container } from 'react-bootstrap';
 
 function App() {
   return (
     <div className="App">
          <BrowserRouter>
             <Navigacija />
+            <Container>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/teams" element={<Teams />} />
             </Routes>
+            </Container>
         </BrowserRouter>
     </div>
   );
