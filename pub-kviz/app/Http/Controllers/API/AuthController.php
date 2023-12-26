@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class AuthController extends Controller
 {
@@ -46,8 +47,11 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request['email']) -> firstOrFail();
+        
         $user->role='loggedIn';
-
+        DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
+        
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -59,7 +63,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        
+        $id=Auth::id();
+        DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
        $request->user()->tokens()->delete();
        return response()->json(['message'=> 'Successfully logged out!']);
     }
