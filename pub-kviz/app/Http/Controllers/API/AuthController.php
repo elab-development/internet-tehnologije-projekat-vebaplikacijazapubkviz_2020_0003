@@ -64,9 +64,10 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $id=Auth::id();
-        
-        if($user->role!='admin'){
-        DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
+        $user = Auth::user();
+
+        if ($user->role !== 'admin') {
+         DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
         }
        $request->user()->tokens()->delete();
        return response()->json(['message'=> 'Successfully logged out!']);
