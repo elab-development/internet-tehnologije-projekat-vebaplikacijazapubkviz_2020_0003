@@ -48,9 +48,9 @@ class AuthController extends Controller
 
         $user = User::where('email', $request['email']) -> firstOrFail();
         
-        $user->role='loggedIn';
+        if($user->role!='admin'){
         DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
-        
+        }
         
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -64,7 +64,10 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $id=Auth::id();
+        
+        if($user->role!='admin'){
         DB::statement("UPDATE users SET role='loggedOut' WHERE id=$id");
+        }
        $request->user()->tokens()->delete();
        return response()->json(['message'=> 'Successfully logged out!']);
     }

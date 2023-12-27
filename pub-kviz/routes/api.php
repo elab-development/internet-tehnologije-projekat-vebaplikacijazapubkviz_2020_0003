@@ -58,6 +58,21 @@ Route::group(['middleware'=>['auth:sanctum','role:loggedIn']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+
+Route::group(['middleware' => ['auth:sanctum','role:admin', 'adminLoggedIn']], function () {
+    Route::get('/user',function(Request $request){
+        return $request->user();
+    });
+
+    Route::put('/members/{id}/update', [MemberController::class, 'update']);
+    Route::delete('/members/{id}/delete', [MemberController::class, 'destroy']);
+
+    Route::post('/members/insert', [MemberController::class,'insert']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+
 Route::post('/upload',function (Request $request)
 {
     if ($request->hasFile('image')) {
@@ -69,13 +84,6 @@ Route::post('/upload',function (Request $request)
     return response()->json(['message'=>'Data not found']);}
 });
 
-Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
-    Route::put('/members/{id}/update', [MemberController::class, 'update']);
-    Route::delete('/members/{id}/delete', [MemberController::class, 'destroy']);
-
-    Route::post('/members/insert', [MemberController::class,'insert']);
-   
-});
 
 
 Route::post('forgot/password',[AuthController::class,'forgotPassword']);
