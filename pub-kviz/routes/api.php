@@ -60,7 +60,7 @@ Route::group(['middleware'=>['auth:sanctum','role:loggedIn']], function(){
 
 
 Route::group(['middleware' => ['auth:sanctum','role:admin', 'adminLoggedIn']], function () {
-    Route::get('/user',function(Request $request){
+    Route::get('/admin',function(Request $request){
         return $request->user();
     });
 
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth:sanctum','role:admin', 'adminLoggedIn']], f
 
     Route::post('/members/insert', [MemberController::class,'insert']);
 
-    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/admin/logout', [AuthController::class, 'logout']);
 });
 
 
