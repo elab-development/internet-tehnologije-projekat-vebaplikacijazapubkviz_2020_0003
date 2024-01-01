@@ -60,3 +60,32 @@
 .event-popup {
   color: aliceblue;
 }
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(150, 183, 255);
+  border-bottom-style: gr;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(63, 100, 201);
+  align-items: center;
+  min-height: 70px;
+  padding-left: 25px;
+  font-size: large;
+}
+
+.quizIcons{
+  font-size: 30px;
+}
+
+/* Amatic SC */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+.NavBar-link{
+  text-decoration: none;
+  margin-right: 70px; 
+  color:white;
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+
+}

@@ -11,7 +11,8 @@ const About = () => {
             </div>
 
             <div className="header-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim lobortis scelerisque fermentum dui faucibus in. Eu consequat ac felis donec et. Pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. In hendrerit gravida rutrum quisque non tellus orci ac auctor. Tincidunt arcu non sodales neque sodales. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Nulla aliquet porttitor lacus luctus accumsan tortor posuere ac ut. Faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Enim lobortis scelerisque fermentum dui.
+                <p>
+                    Pub quiz masters Andjelija and Ivana take organizing quiz events to whole other level. Feel free to join us on our journey.
                 </p>
             </div>
 

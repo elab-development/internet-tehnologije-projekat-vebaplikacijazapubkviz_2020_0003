@@ -4,7 +4,7 @@ import {Calendar, dayjsLocalizer} from "react-big-calendar";
 import dayjs from "dayjs";
 
 
-const QuizCalendar = props => {
+const QuizCalendar = (props) => {
     const localizer = dayjsLocalizer(dayjs);
     return (
         <>
