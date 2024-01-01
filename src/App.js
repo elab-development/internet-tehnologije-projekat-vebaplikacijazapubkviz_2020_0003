@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Events from "./pages/Events";
 import Teams from "./pages/Teams";
+import teams from "./data/teams";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/events" element={<Events />} />
-                <Route path="/teams" element={<Teams />} />
+                <Route path="/teams" element={<Teams teams={teams}/> } />
             </Routes>
             
         </BrowserRouter>

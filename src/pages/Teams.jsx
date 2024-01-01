@@ -1,10 +1,20 @@
 import React from 'react';
+import Team from './Team';
 
-const Teams = () => {
+const Teams = ({teams}) => {
     return (
-        <div>
-            Teams
-        </div>
+        <div className="all-teams">
+        
+        {teams.map((team)=>(
+         <Team 
+         
+         key={team.id}  
+         team={team}
+         
+         />
+       ))}
+
+   </div>
     );
 };
 
