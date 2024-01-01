@@ -4,7 +4,7 @@ import {Calendar, dayjsLocalizer} from "react-big-calendar";
 import dayjs from "dayjs";
 
 
-const Kalendar = props => {
+const QuizCalendar = props => {
     const localizer = dayjsLocalizer(dayjs);
     return (
         <>
@@ -21,9 +21,9 @@ const Kalendar = props => {
     );
 };
 
-Kalendar.propTypes = {
+QuizCalendar.propTypes = {
     events: PropTypes.array.isRequired,
     onSelect: PropTypes.func.isRequired
 };
 
-export default Kalendar;
+export default QuizCalendar;

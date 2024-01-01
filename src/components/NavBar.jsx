@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 
-const Navigacija = () => {
+const NavBar = () => {
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
@@ -19,4 +19,4 @@ const Navigacija = () => {
     );
 };
 
-export default Navigacija;
+export default NavBar;

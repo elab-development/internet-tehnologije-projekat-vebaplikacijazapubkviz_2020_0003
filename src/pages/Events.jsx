@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import 'reactjs-popup/dist/index.css';
 import {Row} from "react-bootstrap";
 import events from "../podaci/events";
-import Kalendar from "../komponente/Kalendar";
-import EventPopup from "../komponente/EventPopup";
+import QuizCalendar from "../components/QuizCalendar";
+import EventPopup from "../components/EventPopup";
 
 const Events = () => {
 
@@ -32,7 +32,7 @@ const Events = () => {
             </div>
 
             <Row>
-                <Kalendar events={events} onSelect={onSelect}/>
+                <QuizCalendar events={events} onSelect={onSelect}/>
             </Row>
             <EventPopup open={open} onClose={onClose} event={event} />
         </>
