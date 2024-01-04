@@ -3,6 +3,7 @@ import MyButton from '../components/MyButton';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import InputForm from './InputForm';
 
 const Login = ({addToken} ) => {
   const [userData, setUserData] = useState({
@@ -62,41 +63,19 @@ const Login = ({addToken} ) => {
 
                     <form>
                       <p>Ulogujte se na nalog</p>
-
-                      <div className="form-outline mb-4">
-                        <input
-                          type="email"
-                          name="email"
-                          id="form2Example11"
-                          className="form-control"
-                          placeholder="Broj telefona ili email"
-                          onInput={(e) => handleInput(e)}
-                        />
-                        <label className="form-label" htmlFor="form2Example11">
-                          Email
-                        </label>
-                      </div>
-
-                      <div className="form-outline mb-4">
-                        <input
-                          type="password"
-                          name="password"
-                          id="form2Example22"
-                          className="form-control"
-                          onInput={handleInput}
-
-                        />
-                        <label className="form-label" htmlFor="form2Example22">
-                          Password
-                        </label>
-                      </div>
+                      <InputForm type={"email"} name={"email"} id={"form2Example11"} text={"Broj telefona ili email"} field={"Email"}
+                      func={(e)=>handleInput(e)}/>
+                      <InputForm type={"password"} name={"password"} id={"form2Example22"} text={""} field={"Password"}
+                      func={(e)=>handleInput(e)}/>
+                      
 
                       <div className="text-center pt-1 mb-5 pb-1">
-                        <MyButton label={"Login"} disabled={false} onClick={handleLogin}></MyButton>
-                         
+                        
+                      <MyButton label={"Login"} disabled={false} onClick={handleLogin}></MyButton>
+{/*                          
                         <a className="text-muted" href="#!">
                           Forgot password?
-                        </a>
+                        </a> */}
                       </div>
 
                       <div className="d-flex align-items-center justify-content-center pb-4">

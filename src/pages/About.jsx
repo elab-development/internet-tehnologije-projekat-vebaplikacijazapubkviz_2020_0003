@@ -1,14 +1,14 @@
 import React from 'react';
+import NamesCard from '../components/NamesCard';
+import HeaderTitle from '../components/HeaderTitle';
 
 
 const About = () => {
     return (
         <>
         <div className="main-info">
-            <div className="header-title m-2">
-                <h1>Something about us</h1>
-                <p>Dare to know that</p>
-            </div>
+        <HeaderTitle title={"Something about us"} text={"Dare to know that"}/>
+
 
             <div className="header-description">
                 <p>
@@ -19,16 +19,9 @@ const About = () => {
             </div>
             </div>
             <div className="horizontal">
-                <div className="names">
-                    <h1>Andjelija Vojnovic</h1>
-                    <img src="https://picsum.photos/300/300" alt="random" />
-                    <p>I am just a simple girl from Pancevo who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events. </p>
-                </div>
-                <div className="names">
-                    <h1>Ivana Vukmirov</h1>
-                    <img src="https://picsum.photos/300/300" alt="random" />
-                    <p>I am just a simple girl from Vrsac who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events. </p>
-                </div>
+                    <NamesCard name={"Andjelija Vojnovic"} text={"I am just a simple girl from Pancevo who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events."}/>
+                    <NamesCard name={"Ivana Vukmirov"} text={"I am just a simple girl from Vrsac who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events."}/>
+                
             </div>
 
         </>

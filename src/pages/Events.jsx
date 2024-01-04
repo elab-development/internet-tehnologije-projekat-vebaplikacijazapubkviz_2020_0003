@@ -3,6 +3,7 @@ import 'reactjs-popup/dist/index.css';
 import events from "../data/events";
 import QuizCalendar from "../components/QuizCalendar";
 import EventPopup from "../components/EventPopup";
+import HeaderTitle from '../components/HeaderTitle';
 
 const Events = () => {
 
@@ -25,15 +26,10 @@ const Events = () => {
 
     return (
         <>
-            <div className="header-title m-2">
-                <h1>Our events</h1>
-                <p>Join us and have fun!</p>
-            </div>
-
-            
-                <QuizCalendar events={events} onSelect={onSelect}/>
-            
+            <HeaderTitle title={"Our events"} text={"Join us and have fun!"}/>
+            <QuizCalendar events={events} onSelect={onSelect}/>
             <EventPopup open={open} onClose={onClose} event={event} />
+            
         </>
     );
 };
