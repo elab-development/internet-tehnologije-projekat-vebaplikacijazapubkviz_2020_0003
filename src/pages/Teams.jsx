@@ -14,7 +14,7 @@ const Teams = () => {
     
     useEffect(() => {
       if (teams == null) {
-        console.log("jeste");
+        
         axios.get("api/users").then((response) => {
           console.log(response);
           setTeams(response.data);
