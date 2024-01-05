@@ -26,10 +26,18 @@ const Teams = () => {
 
       return paginatedTeams;
     };
-
+    const handleSort = (newSortOrder) => {
+      setSortOrder(newSortOrder);
+      setCurrentPage(1); 
+    };
     
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    const totalTeams = teams.length;
+     const totalPages = Math.ceil(totalTeams / teamsPerPage);
+
+      setCurrentPage((prevPage) => {
+      return prevPage >= totalPages ? 1 : prevPage + 1;
+      });
   };
 
   const goToFirstPage = () => {
@@ -51,7 +59,11 @@ const Teams = () => {
         </div>
       )}
 
-   </div>
+        </div>
+            <div>
+              <MyButton label={"Prikaži u rastućem redosledu"} onClick={() => handleSort("asc")}></MyButton>
+              <MyButton label={"Prikaži u opadajućem redosledu"} onClick={() => handleSort("desc")}></MyButton>
+            </div>
    </div>)
 };
 

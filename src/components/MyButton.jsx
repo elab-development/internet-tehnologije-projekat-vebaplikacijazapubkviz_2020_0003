@@ -13,7 +13,9 @@ const MyButton = ({ onClick, label, disabled }) => {
         color: '#fff', 
         border: 'none',
         borderRadius: '4px',
-        margin:'20px'
+        margin:'20px',
+        width:'200px',
+        height:'150px'
       }}
     >
       {label}
