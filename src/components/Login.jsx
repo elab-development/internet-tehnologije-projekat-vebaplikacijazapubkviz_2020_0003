@@ -24,7 +24,7 @@ const Login = ({addToken} ) => {
     axios
       .post("api/login", userData)
       .then((response) => {
-        console.log(response.data.access_token);
+        console.log("Token  je: "+response.data.access_token);
 
         if (response.data.success ===true) {
           window.sessionStorage.setItem(

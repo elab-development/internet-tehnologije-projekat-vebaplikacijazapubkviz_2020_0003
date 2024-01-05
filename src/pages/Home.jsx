@@ -5,13 +5,7 @@ import MyButton from '../components/MyButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
-    const [token, setToken] = useState(null);
-
-  function addToken(auth_token) {
-    setToken(auth_token);
-  }
-
+const Home = ({addToken,token}) => {
   let navigate = useNavigate();
 
   function handleLogout() {
@@ -23,11 +17,12 @@ const Home = () => {
         Authorization: "Bearer " + token,
       }
     };
-    window.sessionStorage.setItem("auth_token", null);
 
     axios.request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+        
+      window.sessionStorage.setItem("auth_token", null);
         window.sessionStorage.removeItem("auth_token");
         
         navigate("/");
