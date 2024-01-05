@@ -4,26 +4,15 @@ import axios from 'axios';
 import MyButton from '../components/MyButton';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import useData from '../useData';
 
 const Teams = () => {
 
-    let [teams, setTeams] = useState();
+    const teams = useData("api/users");
     const [currentPage, setCurrentPage] = useState(1);
     const [teamsPerPage] = useState(5);  
     const [sortOrder, setSortOrder] = useState('asc');
     
-    useEffect(() => {
-      if (teams == null) {
-        
-        axios.get("api/users").then((response) => {
-          console.log(response);
-          setTeams(response.data);
-        }).catch((error) => {
-            console.error('Error fetching data:', error);
-          });;
-      }
-    },[teams]);
-
     const handleSortAndPaginate = () => {
       const sortedTeams = [...teams];
       sortedTeams.sort((a, b) => {
@@ -57,7 +46,9 @@ const Teams = () => {
         <>
          </>
       ) : (
-        handleSortAndPaginate().map((team) => <Team team={team} key={team.id}/>)
+        <div className="all-teams">
+        {handleSortAndPaginate().map((team) => <Team team={team} key={team.id}/>)}
+        </div>
       )}
 
    </div>

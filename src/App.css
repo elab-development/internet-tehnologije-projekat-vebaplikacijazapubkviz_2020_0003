@@ -113,3 +113,10 @@ body {
 .team-content {
   margin: 10px;
 }
+
+.all-teams{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
