@@ -4,7 +4,7 @@ import {Calendar, dayjsLocalizer} from "react-big-calendar";
 import dayjs from "dayjs";
 
 
-const QuizCalendar = ({quizEvents}) => {
+const QuizCalendar = ({quizEvents,onSelect }) => {
     const localizer = dayjsLocalizer(dayjs);
 
 
@@ -14,6 +14,7 @@ const QuizCalendar = ({quizEvents}) => {
             <Calendar
                 localizer={localizer}
                 selectable
+                onSelectEvent={onSelect}
                 events={quizEvents}
                 startAccessor="start"
                 endAccessor="end"

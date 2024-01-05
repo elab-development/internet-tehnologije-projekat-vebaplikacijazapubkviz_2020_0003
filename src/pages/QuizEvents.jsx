@@ -35,9 +35,10 @@ const QuizEvents = () => {
 
     console.log("Quiz events Ivana:"+ JSON.stringify(quizEvents));
     
-    const onSelect = ({quizEvent}) => {
-        console.log(quizEvent);
+    const onSelect = (quizEvent) => {
+        
         setQuizEvent(quizEvent);
+        console.log(quizEvent);
         setOpen(true);
 
         console.log(open);
@@ -53,7 +54,8 @@ const QuizEvents = () => {
         <>
             <HeaderTitle title={"Our events"} text={"Join us and have fun!"}/>
             <QuizCalendar quizEvents={quizEvents} onSelect={onSelect}/>
-            {/* <EventPopup open={open} onClose={onClose} quizEvent={quizEvent} /> */}
+            {quizEvent && <EventPopup open={open} onClose={onClose} event={quizEvent} />}
+   
             
         </>
     );
