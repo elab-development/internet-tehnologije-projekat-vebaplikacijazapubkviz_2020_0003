@@ -15,10 +15,4 @@ const EventPopup = props => {
     );
 };
 
-EventPopup.propTypes = {
-    open: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
-    event: PropTypes.object.isRequired
-};
-
 export default EventPopup;

@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Events from "./pages/Events";
+import QuizEvents from "./pages/QuizEvents";
 import Teams from "./pages/Teams";
 
 
@@ -21,7 +21,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/events" element={<Events />} />
+                <Route path="/quiz_events" element={<QuizEvents />} />
                 <Route path="/teams" element={<Teams/> } />
             </Routes>
             

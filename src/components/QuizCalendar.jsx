@@ -4,26 +4,24 @@ import {Calendar, dayjsLocalizer} from "react-big-calendar";
 import dayjs from "dayjs";
 
 
-const QuizCalendar = (props) => {
+const QuizCalendar = ({quizEvents}) => {
     const localizer = dayjsLocalizer(dayjs);
+
+
+    console.log("U kalendaru su "+JSON.stringify(quizEvents))
     return (
-        <>
+        <> 
             <Calendar
                 localizer={localizer}
                 selectable
-                onSelectEvent={(event) => props.onSelect(event)}
-                events={props.events}
+                events={quizEvents}
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: 500 }}
             />
+        
         </>
     );
-};
-
-QuizCalendar.propTypes = {
-    events: PropTypes.array.isRequired,
-    onSelect: PropTypes.func.isRequired
 };
 
 export default QuizCalendar;

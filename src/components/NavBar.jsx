@@ -15,7 +15,7 @@ const NavBar = () => {
                     
                         <Link to="/" className="NavBar-link"><FaHouse style={{marginRight:10}}/>Home</Link>
                         <Link to="/about" className="NavBar-link"><GrContactInfo style={{marginRight:10}} />About</Link>
-                        <Link to="/events" className="NavBar-link"><MdEventNote style={{marginRight:10}}/>Events</Link>
+                        <Link to="/quiz_events" className="NavBar-link"><MdEventNote style={{marginRight:10}}/>Events</Link>
                         <Link to="/teams" className="NavBar-link"><MdEmojiPeople className="quizIcons"/>Teams</Link>
                     
                 
