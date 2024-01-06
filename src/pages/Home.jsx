@@ -9,10 +9,17 @@ const Home = ({addToken,token}) => {
   let navigate = useNavigate();
 
   function handleLogout() {
+    let myUrl=null;
+    if(window.sessionStorage.getItem("role")==="admin"){
+      myUrl="api/admin/logout";
+
+    }else{
+      myUrl="api/logout";
+    }
 
     let config = {
       method: "post",
-      url: "api/logout",
+      url: myUrl,
       headers: {
         Authorization: "Bearer " + token,
       }
@@ -22,7 +29,8 @@ const Home = ({addToken,token}) => {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         
-      window.sessionStorage.setItem("auth_token", null);
+        window.sessionStorage.setItem("auth_token", null);
+        window.sessionStorage.removeItem("role");
         window.sessionStorage.removeItem("auth_token");
         
         navigate("/");

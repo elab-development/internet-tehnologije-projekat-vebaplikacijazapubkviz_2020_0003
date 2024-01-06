@@ -31,11 +31,20 @@ const Login = ({addToken} ) => {
             "auth_token",
             response.data.access_token
           );
+          window.sessionStorage.setItem(
+            "role",
+            response.data.role
+          );
           addToken(response.data.access_token);
           navigate("/");
         }
         
         alert("Ulogovali ste se");
+        if(response.data.role==="loggedOut")
+        window.sessionStorage.setItem(
+          "role",
+          "loggedIn"
+        );
       })
       .catch((error) => {
         console.log(error);
