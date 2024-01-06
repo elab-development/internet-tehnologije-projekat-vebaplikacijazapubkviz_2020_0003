@@ -15,7 +15,7 @@ const MyButton = ({ onClick, label, disabled }) => {
         borderRadius: '4px',
         margin:'20px',
         width:'200px',
-        height:'150px'
+        height:'70px'
       }}
     >
       {label}
