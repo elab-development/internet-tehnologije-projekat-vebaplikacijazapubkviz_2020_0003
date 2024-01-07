@@ -14,6 +14,12 @@ class ScoreboardController extends Controller
     public function index()
     {
         //
+        $result=DB::select("SELECT se.name AS season,u.name AS team, s.index
+        FROM users U
+        JOIN scoreboards S ON(u.id=s.user_id)
+        JOIN seasons SE ON(se.id=s.season_id)");
+        return $result;
+
     }
 
     /**

@@ -85,12 +85,12 @@ const Login = ({addToken} ) => {
                         style={{ width: '200px' }}
                         alt="logo"
                       />
-                      <h4 className="mt-1 mb-5 pb-1">Prijava</h4>
+                      <h4 className="mt-1 mb-5 pb-1">Login</h4>
                     </div>
 
                     <form>
-                      <p>Ulogujte se na nalog</p>
-                      <InputForm type={"email"} name={"email"} id={"form2Example11"} text={"Broj telefona ili email"} field={"Email"}
+                      
+                      <InputForm type={"email"} name={"email"} id={"form2Example11"} text={"Enter your phone number or email"} field={"Email"}
                       func={(e)=>handleInput(e)}/>
                       <InputForm type={"password"} name={"password"} id={"form2Example22"} text={""} field={"Password"}
                       func={(e)=>handleInput(e)}/>
@@ -101,16 +101,16 @@ const Login = ({addToken} ) => {
                       <MyButton label={"Login"} disabled={false} onClick={handleLogin}></MyButton>
                       
                       <div className="d-flex align-items-center justify-content-center pb-4">
-                        <p className="mb-0 me-2">Zaboravljena lozinka?</p>
+                        <p className="mb-0 me-2">Forgot password?</p>
 
-                        <MyButton label={"Unesite novu u polju iznad i kliknite OVDE"} onClick={handleChangePassword}></MyButton>
+                        <MyButton label={"Just insert new one and CLICK HERE"} onClick={handleChangePassword}></MyButton>
                       </div>
 
                       </div>
 
                       <div className="d-flex align-items-center justify-content-center pb-4">
-                        <p className="mb-0 me-2">Nemate nalog?</p>
-                        <MyButton label={"Registracija"} onClick={handleRegistration}></MyButton>
+                        <p className="mb-0 me-2">Don't have an account?</p>
+                        <MyButton label={"Register"} onClick={handleRegistration}></MyButton>
                       </div>
                       
                     </form>

@@ -93,29 +93,29 @@ const Teams = () => {
   
     return (
       <div>
-         <div className='header-title'>Pretraga tima po ID-u</div>
+         <div className='header-title'>Search by ID</div>
       
           <input
             type="number"
-            placeholder="Unesite ID tima"
+            placeholder="Team ID"
             value={searchId}
             onChange={(e) => setSearchId(e.target.value)}
           />
-          <MyButton label={"Pretraži"} onClick={handleSearchTeam} disabled={!searchId} />
+          <MyButton label={"Search"} onClick={handleSearchTeam} disabled={!searchId} />
 
           {foundTeam ? (
             <div className="found-team">
               <Team team={foundTeam} key={foundTeam.id} />
             </div>
           ) : (
-            <p>{searchId && "Nema tima sa unetim ID-em"}</p>
+            <p>{searchId && "Data not found"}</p>
           )}
           <div>
-          <MyButton label={"Sledeća strana"} onClick={() => handleNextPageRecent()} disabled={false} />
-          <MyButton label={"Početak"} onClick={() => goToFirstPageRecent()} disabled={false} />
+          <MyButton label={"Next"} onClick={() => handleNextPageRecent()} disabled={false} />
+          <MyButton label={"Start"} onClick={() => goToFirstPageRecent()} disabled={false} />
             </div>
             
-            <div className='header-title'>Nedavno dodati timovi</div>
+            <div className='header-title'>Recent teams</div>
           <div className="all-teams">
             {handleSortAndPaginate(recentTeams, currentPageRecent, teamsPerPage).map((team) => (
               <Team team={team} key={team.id} />
@@ -124,10 +124,10 @@ const Teams = () => {
         </div>
 
 
-        <MyButton label={"Sledeća strana"} onClick={() => handleNextPage()} disabled={false} />
-        <MyButton label={"Početak"} onClick={() => goToFirstPage()} disabled={false} />
+        <MyButton label={"Next"} onClick={() => handleNextPage()} disabled={false} />
+        <MyButton label={"Start"} onClick={() => goToFirstPage()} disabled={false} />
 
-        <div className='header-title'>Svi timovi</div>
+        <div className='header-title'>Teams</div>
         <div className="all-teams">
         {teams == null ? (
         <>
@@ -140,8 +140,8 @@ const Teams = () => {
 
         </div>
             <div>
-              <MyButton label={"Prikaži u rastućem redosledu"} onClick={() => handleSort("asc")}></MyButton>
-              <MyButton label={"Prikaži u opadajućem redosledu"} onClick={() => handleSort("desc")}></MyButton>
+              <MyButton label={"View ascending"} onClick={() => handleSort("asc")}></MyButton>
+              <MyButton label={"View descending"} onClick={() => handleSort("desc")}></MyButton>
             </div>
    </div>)
 };

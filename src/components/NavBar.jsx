@@ -5,6 +5,7 @@ import { FaMugHot  } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { MdEventNote } from "react-icons/md";
 import { GrContactInfo } from "react-icons/gr";
+import { MdOutlineScoreboard } from "react-icons/md";
 
 const NavBar = () => {
     return (
@@ -17,7 +18,9 @@ const NavBar = () => {
                         <Link to="/about" className="NavBar-link"><GrContactInfo style={{marginRight:10}} />About</Link>
                         <Link to="/quiz_events" className="NavBar-link"><MdEventNote style={{marginRight:10}}/>Events</Link>
                         <Link to="/teams" className="NavBar-link"><MdEmojiPeople className="quizIcons"/>Teams</Link>
-                    
+                        <Link to="/scoreboards" className="NavBar-link"><MdOutlineScoreboard className="quizIcons"/>Scoreboards</Link>
+
+
                 
             </div>
         </>

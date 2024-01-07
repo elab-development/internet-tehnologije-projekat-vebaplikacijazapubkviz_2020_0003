@@ -31,7 +31,7 @@ const EventPopup = props => {
                     <h1 className="text-center">{props.event.title}</h1>
                     <p className="text-center">{props.event.desc}</p>
                     
-                    <MyButton label={"Preuzmi"} onClick={handleExport}></MyButton>
+                    <MyButton label={"Export"} onClick={handleExport}></MyButton>
                 </div>
             </Popup>
         </>

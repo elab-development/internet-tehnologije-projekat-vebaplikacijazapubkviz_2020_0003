@@ -87,4 +87,5 @@ Route::post('/upload',function (Request $request)
 
 
 Route::post('forgot/password',[AuthController::class,'forgotPassword']);
+Route::get('/scoreboards',[ScoreboardController::class,'index']);
 Route::get('/scoreboards/update',[ScoreboardController::class,'update']);
