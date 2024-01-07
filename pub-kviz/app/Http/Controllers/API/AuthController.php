@@ -79,12 +79,12 @@ class AuthController extends Controller
     {   
         $request->validate([
           'email' => 'required',
-          'new_password' => 'required|string|min:8'
+          'password' => 'required|string|min:8'
         ]);
         $user = User::where('email', $request->email) -> firstOrFail();
         if([$request->email,'=', $user->email]) {
             
-            $user->password=Hash::make($request->new_password);
+            $user->password=Hash::make($request->password);
             $user->save();
             
         }

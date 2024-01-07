@@ -54,6 +54,21 @@ const Login = ({addToken} ) => {
       navigate("/register");
     };
 
+  function handleChangePassword(e){
+    e.preventDefault();
+    axios
+      .post("api/forgot/password", userData)
+      .then((response) => {
+        
+        navigate("/");
+        
+        alert("Uspešna izmena lozinke");
+      })
+      .catch((error) => {
+        alert("Greska pri izmeni lozinke!");
+      });
+  }
+
   return (
     <div className="login text-center">
        <section className="h-100 gradient-form" style={{ backgroundColor: '#eee' }}>
@@ -84,16 +99,20 @@ const Login = ({addToken} ) => {
                       <div className="text-center pt-1 mb-5 pb-1">
                         
                       <MyButton label={"Login"} disabled={false} onClick={handleLogin}></MyButton>
-{/*                          
-                        <a className="text-muted" href="#!">
-                          Forgot password?
-                        </a> */}
+                      
+                      <div className="d-flex align-items-center justify-content-center pb-4">
+                        <p className="mb-0 me-2">Zaboravljena lozinka?</p>
+
+                        <MyButton label={"Unesite novu u polju iznad i kliknite OVDE"} onClick={handleChangePassword}></MyButton>
+                      </div>
+
                       </div>
 
                       <div className="d-flex align-items-center justify-content-center pb-4">
                         <p className="mb-0 me-2">Nemate nalog?</p>
                         <MyButton label={"Registracija"} onClick={handleRegistration}></MyButton>
                       </div>
+                      
                     </form>
                   </div>
                 </div>
