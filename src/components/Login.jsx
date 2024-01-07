@@ -47,9 +47,12 @@ const Login = ({addToken} ) => {
         );
       })
       .catch((error) => {
-        console.log(error);
+        alert("Greska pri prijavljivanju!");
       });
   }
+    const handleRegistration= () => {
+      navigate("/register");
+    };
 
   return (
     <div className="login text-center">
@@ -89,7 +92,7 @@ const Login = ({addToken} ) => {
 
                       <div className="d-flex align-items-center justify-content-center pb-4">
                         <p className="mb-0 me-2">Nemate nalog?</p>
-                        <MyButton label={"Registracija"}></MyButton>
+                        <MyButton label={"Registracija"} onClick={handleRegistration}></MyButton>
                       </div>
                     </form>
                   </div>

@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import QuizEvents from "./pages/QuizEvents";
 import Teams from "./pages/Teams";
+import Register from './components/Register';
 import { useState } from 'react';
 
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/quiz_events" element={<QuizEvents />} />
                 <Route path="/teams" element={<Teams/> } />
+                <Route path='/register' element = { <Register/> }/>
             </Routes>
             
         </BrowserRouter>
