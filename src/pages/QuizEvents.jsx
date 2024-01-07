@@ -7,7 +7,7 @@ import HeaderTitle from '../components/HeaderTitle';
 import { useEffect } from 'react';
 const QuizEvents = () => {
     const [quizEvents, setQuizEvents] = useState([]);
-    const quizEventsData  = useData("api/seasons/1/quiz_events");
+    const quizEventsData  = useData("api/quiz_events");
     
     const [open, setOpen] = useState(false);
     const [quizEvent, setQuizEvent] = useState(null);
@@ -33,8 +33,6 @@ const QuizEvents = () => {
         }
     }, [quizEventsData]);
 
-
-    console.log("Quiz events Ivana:"+ JSON.stringify(quizEvents));
     
     const onSelect = (quizEvent) => {
         
