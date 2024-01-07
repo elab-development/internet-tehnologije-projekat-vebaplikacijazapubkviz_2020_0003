@@ -29,7 +29,7 @@ class SeasonQuizEventController extends Controller
         $filename="kvizDogadjaj.ics";
         $s_id=$request->season_id;
         $q_id=$request->quiz_event_id;
-        $quiz_event=QuizEvent::get()->where('season_id',$s_id)->where('quiz_event_id',$q_id)[0];
+        $quiz_event=QuizEvent::get()->where('season_id',$s_id)->where('quiz_event_id',$q_id)->first();
         
            $res= Calendar::create('Quiz Event')
             ->event(Event::create($quiz_event->topic)

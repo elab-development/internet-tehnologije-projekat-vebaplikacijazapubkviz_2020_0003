@@ -17,6 +17,7 @@ const QuizEvents = () => {
         const formatQE = () => {
             if (quizEventsData) {
                 const formattedQE = quizEventsData.map((event) => ({
+                    id: event.quiz_event_id,
                     title: event.topic,
                     start: new Date(event.quiz_date),
                     end: new Date(new Date(event.quiz_date).getTime() + 2 * 60 * 60 * 1000),
