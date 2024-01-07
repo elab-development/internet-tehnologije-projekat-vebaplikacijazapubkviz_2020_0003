@@ -15,6 +15,20 @@ const Teams = () => {
     const [sortOrder, setSortOrder] = useState('asc');
     const [recentTeams, setRecentTeams] = useState([]);
 
+    const [searchId, setSearchId] = useState('');
+    const [foundTeam, setFoundTeam] = useState(null);
+
+    const handleSearchTeam = () => {
+      if (!teams || teams.length === 0 || !searchId) {
+        setFoundTeam(null);
+        return;
+      }
+
+      const teamWithId = teams.filter((team) => team.id === parseInt(searchId, 10))[0];
+
+      setFoundTeam(teamWithId || null);
+    };
+
     useEffect(() => {
       if (teams) {
         const currentDate = new Date();
@@ -79,17 +93,34 @@ const Teams = () => {
   
     return (
       <div>
-        <div>
-        <MyButton label={"Sledeća strana"} onClick={() => handleNextPageRecent()} disabled={false} />
-        <MyButton label={"Početak"} onClick={() => goToFirstPageRecent()} disabled={false} />
-          </div>
-          
-          <div className='header-title'>Nedavno dodati timovi</div>
-        <div className="all-teams">
-          {handleSortAndPaginate(recentTeams, currentPageRecent, teamsPerPage).map((team) => (
-            <Team team={team} key={team.id} />
-          ))}
-          
+         <div className='header-title'>Pretraga tima po ID-u</div>
+      
+          <input
+            type="number"
+            placeholder="Unesite ID tima"
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+          />
+          <MyButton label={"Pretraži"} onClick={handleSearchTeam} disabled={!searchId} />
+
+          {foundTeam ? (
+            <div className="found-team">
+              <Team team={foundTeam} key={foundTeam.id} />
+            </div>
+          ) : (
+            <p>{searchId && "Nema tima sa unetim ID-em"}</p>
+          )}
+          <div>
+          <MyButton label={"Sledeća strana"} onClick={() => handleNextPageRecent()} disabled={false} />
+          <MyButton label={"Početak"} onClick={() => goToFirstPageRecent()} disabled={false} />
+            </div>
+            
+            <div className='header-title'>Nedavno dodati timovi</div>
+          <div className="all-teams">
+            {handleSortAndPaginate(recentTeams, currentPageRecent, teamsPerPage).map((team) => (
+              <Team team={team} key={team.id} />
+            ))}
+            
         </div>
 
 
