@@ -3,7 +3,19 @@ import Button from 'react-bootstrap/Button';
 import MyButton from './MyButton';
 import axios from 'axios';
 
+function useImgCounter(initialNumber) {
+  const [countImg, setCountImg] = useState(initialNumber);
+
+  const increment = () => {
+    setCountImg(countImg + 1);
+  };
+
+  return [countImg,increment];
+}
+
+
 const UploadImage = () => {
+    const [countImg, incrementCount] = useImgCounter(0);
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (event) => {
@@ -26,6 +38,8 @@ const UploadImage = () => {
           .then((response) => {
             console.log(JSON.stringify(response.data));
             alert(response.data.message);
+            incrementCount(); 
+            console.log("Current number of images: "+countImg);
           })
           .catch((error) => {
             console.log(error);

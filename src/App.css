@@ -102,6 +102,8 @@ body {
   display: flex;
   flex-direction: row;
   margin: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .team-img {
@@ -112,11 +114,4 @@ body {
 
 .team-content {
   margin: 10px;
-}
-
-.all-teams{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
 }
