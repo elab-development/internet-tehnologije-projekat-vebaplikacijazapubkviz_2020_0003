@@ -1,6 +1,7 @@
 import React from 'react';
 import NamesCard from '../components/NamesCard';
 import HeaderTitle from '../components/HeaderTitle';
+import UploadImage from '../components/UploadImage';
 
 
 const About = () => {
@@ -22,8 +23,12 @@ const About = () => {
                     <NamesCard name={"Andjelija Vojnovic"} text={"I am just a simple girl from Pancevo who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events."}/>
                     <NamesCard name={"Ivana Vukmirov"} text={"I am just a simple girl from Vrsac who dared to make a pub quiz alive. Some of my dreams came true with all the excitement and fun we have in those pub events."}/>
                 
+                    
             </div>
-
+            <div style={{ backgroundColor: '#c0e4f7', padding: '20px' }}>
+                <UploadImage />
+            </div>
+            
         </>
     );
 };
