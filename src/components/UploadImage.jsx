@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import MyButton from './MyButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function useImgCounter(initialNumber) {
   const [countImg, setCountImg] = useState(initialNumber);
@@ -17,6 +18,7 @@ function useImgCounter(initialNumber) {
 const UploadImage = () => {
     const [countImg, incrementCount] = useImgCounter(0);
     const [selectedFile, setSelectedFile] = useState(null);
+    let navigate=useNavigate();
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -40,9 +42,11 @@ const UploadImage = () => {
             alert(response.data.message);
             incrementCount(); 
             console.log("Current number of images: "+countImg);
+            navigate("/teams");
           })
           .catch((error) => {
-            console.log(error);
+            alert("Data not found");
+            navigate("/");
           });
           
     };

@@ -21,7 +21,7 @@ const QuizEvents = () => {
                     title: event.topic,
                     start: new Date(event.quiz_date),
                     end: new Date(new Date(event.quiz_date).getTime() + 2 * 60 * 60 * 1000),
-                    desc: "2023/2024",
+                    desc: "Since 2023/2024",
                 }));
                 setQuizEvents(formattedQE);
                 setQuizEvent(formattedQE[0]);

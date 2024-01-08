@@ -61,7 +61,12 @@ class ScoreboardController extends Controller
     {
         //
         //
-        DB::statement('UPDATE scoreboards sc INNER JOIN `statistics` st ON (sc.season_id=st.season_id) SET sc.correct_total=sc.correct_total+st.correct,sc.incorrect_total=sc.incorrect_total+st.incorrect');
+        DB::statement('
+        UPDATE scoreboards sc
+        INNER JOIN statistics st ON sc.season_id = st.season_id AND sc.user_id = st.user_id
+        SET sc.correct_total = sc.correct_total + st.correct, sc.incorrect_total = sc.incorrect_total + st.incorrect
+        ');
+
         DB::statement("UPDATE scoreboards SET `index`=correct_total-incorrect_total" );
         
         return response()->json(['message'=>'Successfully updated!']);

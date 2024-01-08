@@ -81,7 +81,7 @@ Route::post('/upload',function (Request $request)
         $image->move(public_path('images'), $name);
         return response()->json(['message'=>'Image successfully uploaded']);
     } else{
-    return response()->json(['message'=>'Data not found']);}
+    return response()->json(['message'=>'Data not found'])->error();}
 });
 
 

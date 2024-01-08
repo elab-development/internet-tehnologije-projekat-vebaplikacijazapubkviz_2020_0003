@@ -24,10 +24,10 @@ const Register = () => {
     function handleRegister(e) {
         e.preventDefault();
         axios.post("api/register", userData).then( (response) => {
-            console.log(response.data);
+            alert("You're registered!");
             navigate("/");
         }).catch( (error) => {
-            alert("Greska pri registraciji");
+            alert("Error");
         }); 
     }
   return (

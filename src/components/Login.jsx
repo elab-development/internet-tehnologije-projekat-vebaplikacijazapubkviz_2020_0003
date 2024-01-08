@@ -39,7 +39,7 @@ const Login = ({addToken} ) => {
           navigate("/");
         }
         
-        alert("Ulogovali ste se");
+        alert("You're logged in!");
         if(response.data.role==="loggedOut")
         window.sessionStorage.setItem(
           "role",
@@ -47,7 +47,7 @@ const Login = ({addToken} ) => {
         );
       })
       .catch((error) => {
-        alert("Greska pri prijavljivanju!");
+        alert("Error! Try again.");
       });
   }
     const handleRegistration= () => {
@@ -62,10 +62,10 @@ const Login = ({addToken} ) => {
         
         navigate("/");
         
-        alert("Uspešna izmena lozinke");
+        alert("Password has been changed");
       })
       .catch((error) => {
-        alert("Greska pri izmeni lozinke!");
+        alert("Error! Try again.");
       });
   }
 
@@ -103,7 +103,7 @@ const Login = ({addToken} ) => {
                       <div className="d-flex align-items-center justify-content-center pb-4">
                         <p className="mb-0 me-2">Forgot password?</p>
 
-                        <MyButton label={"Just insert new one and CLICK HERE"} onClick={handleChangePassword}></MyButton>
+                        <MyButton label={"Just insert the new one and CLICK HERE"} onClick={handleChangePassword}></MyButton>
                       </div>
 
                       </div>
