@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MyButton from '../components/MyButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Home = ({addToken,token}) => {
   let navigate = useNavigate();
@@ -54,6 +55,20 @@ const Home = ({addToken,token}) => {
           
         });
     };
+    const [randomFact, setRandomFact] = useState('');
+
+    const generateRandomFact = () => {
+      const apiUrl = 'http://numbersapi.com/random/trivia';
+  
+      axios.get(apiUrl)
+        .then(response => setRandomFact(response.data))
+        .catch(error => {});
+    };
+  
+    useEffect(() => {
+      generateRandomFact();
+    }, []); 
+  
 
     return (
       
@@ -61,8 +76,11 @@ const Home = ({addToken,token}) => {
            {window.sessionStorage.getItem("auth_token")===null?
             (<Login addToken={addToken} />) : (<div><MyButton label={"Logout"} onClick={handleLogout}/>
             <p>Random question:  <span dangerouslySetInnerHTML={{ __html: randomQuestion }} /></p>
-             <MyButton label={"Random question:"} disabled={false} onClick={generateRandomQuestion}></MyButton></div>)}
+             <MyButton label={"Random question:"} disabled={false} onClick={generateRandomQuestion}></MyButton>
+              <p>{randomFact}</p></div>)}
+            
         </div>
+        
     );
 };
 
