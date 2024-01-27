@@ -40,11 +40,28 @@ const Home = ({addToken,token}) => {
         console.log(error);
       });
     }
+    const [randomQuestion, setRandomQuestion] = useState('');
+
+    const generateRandomQuestion = () => {
+      //OPEN TRIVIA DB service
+      const url = 'https://opentdb.com/api.php?amount=1'; 
+      axios.get(url)
+        .then(response => {
+          const question = response.data.results[0].question;
+          setRandomQuestion(question);
+        })
+        .catch(error => {
+          
+        });
+    };
+
     return (
       
         <div>
            {window.sessionStorage.getItem("auth_token")===null?
-            (<Login addToken={addToken} />) : (<div><MyButton label={"Logout"} onClick={handleLogout}/></div>)}
+            (<Login addToken={addToken} />) : (<div><MyButton label={"Logout"} onClick={handleLogout}/>
+            <p>Random question:  <span dangerouslySetInnerHTML={{ __html: randomQuestion }} /></p>
+             <MyButton label={"Random question:"} disabled={false} onClick={generateRandomQuestion}></MyButton></div>)}
         </div>
     );
 };

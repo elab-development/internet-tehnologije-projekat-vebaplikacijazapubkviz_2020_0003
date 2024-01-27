@@ -40,11 +40,11 @@ const Register = () => {
             <div className="col-lg-8 col-xl-6">
                 <div className="card rounded-3">
                 <div className="card-body p-4 p-md-5">
-                    <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Kreirajte nalog</h3>
+                    <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Register</h3>
 
                     <form className="px-md-2">
 
-                        <InputForm type={"name"} name={"name"} id={"form3Example1cg"} text={"Korisničko ime"} field={"Username"}
+                        <InputForm type={"name"} name={"name"} id={"form3Example1cg"} text={"Username"} field={"Username"}
                         func={(e)=>handleInput(e)}/>
 
                     <InputForm type={"email"} name={"email"} id={"form3Example3cg"} text={"Email"} field={"Email"}
