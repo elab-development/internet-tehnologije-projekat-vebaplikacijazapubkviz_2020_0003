@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import MyButton from './MyButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function useImgCounter(initialNumber) {
   const [countImg, setCountImg] = useState(initialNumber);
@@ -18,17 +19,22 @@ function useImgCounter(initialNumber) {
 const UploadImage = () => {
     const [countImg, incrementCount] = useImgCounter(0);
     const [selectedFile, setSelectedFile] = useState(null);
+    
+
     let navigate=useNavigate();
 
+
     const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
+      const file = event.target.files[0];
+      setSelectedFile(file);
     };
 
     const handleUpload = () => {
+      if (selectedFile) {
         const formData = new FormData();
         formData.append('image', selectedFile);
         console.log("ovde "+formData);
-        
+        incrementCount();
 
         let config = {
             method: 'post',
@@ -42,12 +48,14 @@ const UploadImage = () => {
             alert(response.data.message);
             incrementCount(); 
             console.log("Current number of images: "+countImg);
-            navigate("/teams");
+            // navigate("/teams");
           })
           .catch((error) => {
             alert("Data not found");
             navigate("/");
-          });
+          });}else {
+            alert('Please select an image before uploading.');
+          }
           
     };
 
@@ -56,6 +64,19 @@ const UploadImage = () => {
             <p className='header-title'>Feel free to share images from the events with us!</p>
             <input type="file" onChange={handleFileChange} accept="image/*" />
             <MyButton label={"Upload image"} onClick={handleUpload}/>
+
+            {selectedFile && (
+            <div>
+              <h2>Uploaded Image</h2>
+              <div>
+                <img
+                  src={URL.createObjectURL(selectedFile)}
+                  alt={`Uploaded Image`}
+                  style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+          )}
         </div>
     );
 };
