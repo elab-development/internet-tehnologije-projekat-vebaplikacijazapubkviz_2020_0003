@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
 import useData from '../useData'
+import { Chart } from 'react-google-charts';
 
 const Scoreboards = () => {
     const scoreboardsDB=useData("api/scoreboards");
     
+
+    const chartData = [['Team', 'Index']];
+    scoreboardsDB.forEach((scoreboard) => {
+      chartData.push([scoreboard.team, scoreboard.index]);
+    });
+
     return (
         <div>
       {scoreboardsDB === null ? (
@@ -33,6 +40,17 @@ const Scoreboards = () => {
           </tbody>
         </table>
       )}
+      <Chart
+            chartType="BarChart"
+            data={chartData}
+            options={{
+              title: 'Team Index Chart',
+              hAxis: { title: 'Team', titleTextStyle: { color: '#333' } },
+              vAxis: { title: 'Index', minValue: 0 },
+            }}
+            width="100%"
+            height="400px"
+          />
     </div>
   );
 }
