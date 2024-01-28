@@ -37,6 +37,7 @@ class MemberController extends Controller
 
     public function insert(Request $request)
     {
+        $this->authorize('insert', Member::class);
         $validator=Validator::make($request->all(),[ 
             'first_name'=>'required|string|max:50',
             'last_name'=>'required|string|max:50'
@@ -52,6 +53,7 @@ class MemberController extends Controller
             'last_name'=>$request->last_name,
             'user_id'=>Auth::user()->id
         ]);
+        
 
         return response()->json([
             'message'=>'Member created successfully',
@@ -80,6 +82,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, $member_id)
     {
+        
         //
         $validator=Validator::make($request->all(),[ 
             'first_name'=>'required|string|max:50',
@@ -92,6 +95,8 @@ class MemberController extends Controller
         }
         
         $member=Member::find($member_id);
+        $this->authorize('update', $member);
+
         if (is_null($member)) {
            
             return response()->json('Data not found', 404);
@@ -115,7 +120,8 @@ class MemberController extends Controller
 
         
         $member = Member::find($member_id);
- 
+        $this->authorize('destroy', $member);
+
         if (is_null($member)) {
            
             return response()->json('Data not found', 404);
