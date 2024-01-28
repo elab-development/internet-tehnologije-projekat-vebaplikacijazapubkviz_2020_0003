@@ -42,11 +42,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
         if(!Auth::attempt($request->only('email','password'))){
             return response()->json(['message'=>'Unauthorized'], 401);
         }
 
-        $user = User::where('email', $request['email']) -> firstOrFail();
+        $user = User::where('email', $request->input('email')) -> firstOrFail();
         
         if($user->role!='admin'){
         DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
