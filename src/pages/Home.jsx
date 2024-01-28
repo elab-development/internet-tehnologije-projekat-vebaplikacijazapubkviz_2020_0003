@@ -192,7 +192,27 @@ const Home = ({addToken,token}) => {
           alert("Error while inserting member")
         });
     }
+    
     const coffeeImageUrl = 'https://source.unsplash.com/featured/?coffee';
+
+    const [randomFood, setRandomFood] = useState(null);
+
+    useEffect(() => {
+      const getRandomFoodInfo = () => {
+        axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
+          .then(response => {
+            const randomFood = response.data.meals[0];
+            setRandomFood(randomFood);
+          })
+          .catch(error => {
+            console.log('Error while reading food info');
+          });
+      };
+
+      getRandomFoodInfo();
+    }, []);
+
+
     return (
       
         <div>
@@ -201,8 +221,22 @@ const Home = ({addToken,token}) => {
               
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <div className="card" style={{width:500}}>
-                
+
               <img src={coffeeImageUrl} alt="Random coffee picture" />
+                    <div>
+            <h2>Random food info</h2>
+            {randomFood ? (
+              <div>
+                <p>Food name: {randomFood.strMeal}</p>
+                <p>Category: {randomFood.strCategory}</p>
+                <p>Region: {randomFood.strArea}</p>
+               
+              </div>
+            ) : (
+              <></>
+            )}
+
+          </div>
 
             <div className="card-header">
                 Member
