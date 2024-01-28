@@ -224,40 +224,48 @@ const Home = ({addToken,token}) => {
 
               <img src={coffeeImageUrl} alt="Random coffee picture" />
                     <div>
-            <h2>Random food info</h2>
-            {randomFood ? (
-              <div>
-                <p>Food name: {randomFood.strMeal}</p>
-                <p>Category: {randomFood.strCategory}</p>
-                <p>Region: {randomFood.strArea}</p>
-               
-              </div>
-            ) : (
-              <></>
-            )}
-
-          </div>
-
-            <div className="card-header">
-                Member
-              </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item"> 
-                  <MyButton label={"Delete member"} disabled={false} onClick={deleteMember} ></MyButton></li>
-                
+                    <h2>Random food info</h2>
+                    {randomFood ? (
+                      <div>
+                        <p>Food name: {randomFood.strMeal}</p>
+                        <p>Category: {randomFood.strCategory}</p>
+                        <p>Region: {randomFood.strArea}</p>
                       
-                      <InputForm type={"name"} name={"id"} id={"form4Example7cg"} field={"Member ID:"}
-                        func={(e)=>handleInput(e)}/>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
 
-                       <InputForm type={"name"} name={"first_name"} id={"form4Example5cg"} field={"First name"}
-                        func={(e)=>handleInput(e)}/>
+                  </div>
+                  {window.sessionStorage.getItem("role") === "admin" && (
+                    <div>
+                  <div className="card-header">
+                      Member
+                    </div>
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item"> 
+                        <MyButton label={"Delete member"} disabled={false} onClick={deleteMember} ></MyButton></li>
                       
-                      <InputForm type={"name"} name={"last_name"} id={"form4Example6cg"} field={"Last name"}
-                        func={(e)=>handleInput(e)}/>
-                        <MyButton label={"Insert member"} disabled={false} onClick={insertMember}></MyButton>
-                        <MyButton label={"Update member"} disabled={false} onClick={updateMember}></MyButton>
-                        
-              </ul>
+                            
+                            <InputForm type={"name"} name={"id"} id={"form4Example7cg"} field={"Member ID:"}
+                              func={(e)=>handleInput(e)}/>
+
+                            <InputForm type={"name"} name={"first_name"} id={"form4Example5cg"} field={"First name"}
+                              func={(e)=>handleInput(e)}/>
+                            
+                            <InputForm type={"name"} name={"last_name"} id={"form4Example6cg"} field={"Last name"}
+                              func={(e)=>handleInput(e)}/>
+                              <MyButton label={"Insert member"} disabled={false} onClick={insertMember}></MyButton>
+                              <MyButton label={"Update member"} disabled={false} onClick={updateMember}></MyButton>
+                              
+                    </ul>
+                    </div>
+                    )}
+
+
+
+
+
               </div>
         </div>
 
