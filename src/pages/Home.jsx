@@ -69,6 +69,47 @@ const Home = ({addToken,token}) => {
     useEffect(() => {
       generateRandomFact();
     }, []); 
+
+    //do ovde
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [amountOfQuestions, setAmountOfQuestions] = useState(3);
+    const [questions, setQuestions] = useState([]);
+
+    useEffect(() => {
+    
+    const getCategories = () => {
+      axios.get('https://opentdb.com/api_category.php')
+        .then(response => {
+          const fetchedCategories = response.data.trivia_categories;
+          setCategories(fetchedCategories);
+        })
+        .catch(error => {
+          console.log('Error while selecting the category');
+        });
+    };
+
+    getCategories();
+  }, []);
+
+  const getQuestions = () => {
+    axios.get(`https://opentdb.com/api.php`, {
+      params: {
+        amount: amountOfQuestions,
+        category: selectedCategory,
+        type: 'multiple',
+      },
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      setQuestions(data.results);
+    })
+    .catch(error => {
+      console.log('Error while selecting questions');
+    });
+  };
+
   
     const [memberData, setMemberData] = useState({
       id:"",
@@ -188,6 +229,33 @@ const Home = ({addToken,token}) => {
             <p>Random question:  <span dangerouslySetInnerHTML={{ __html: randomQuestion }} /></p>
              <MyButton label={"Random question:"} disabled={false} onClick={generateRandomQuestion}></MyButton>
               <p>{randomFact}</p>
+
+              <div>
+                <label htmlFor="categorySelect">Choose a category:</label>
+                <select
+                  id="categorySelect"
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  value={selectedCategory}
+                >
+                  <option value="">Select a category:</option>
+                  {categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={getQuestions}>Get questions</button>
+              </div>
+              {questions.length > 0 && (
+                <div>
+                  <h2>Questions:</h2>
+                  <ul>
+                    {questions.map((question, index) => (
+                      <li key={index} dangerouslySetInnerHTML={{ __html: question.question }} />
+                    ))}
+                  </ul>
+                </div>
+              )}
               <MyButton label={"Logout"} onClick={handleLogout}/>
 
 
