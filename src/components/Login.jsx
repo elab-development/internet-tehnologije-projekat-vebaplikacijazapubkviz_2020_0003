@@ -89,7 +89,6 @@ const Login = ({addToken} ) => {
                     </div>
 
                     <form>
-                      
                       <InputForm type={"email"} name={"email"} id={"form2Example11"} text={"Enter your phone number or email"} field={"Email"}
                       func={(e)=>handleInput(e)}/>
                       <InputForm type={"password"} name={"password"} id={"form2Example22"} text={""} field={"Password"}
