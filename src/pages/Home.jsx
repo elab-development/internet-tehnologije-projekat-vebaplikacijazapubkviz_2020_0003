@@ -192,7 +192,7 @@ const Home = ({addToken,token}) => {
           alert("Error while inserting member")
         });
     }
-
+    const coffeeImageUrl = 'https://source.unsplash.com/featured/?coffee';
     return (
       
         <div>
@@ -201,7 +201,9 @@ const Home = ({addToken,token}) => {
               
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               <div className="card" style={{width:500}}>
-              
+                
+              <img src={coffeeImageUrl} alt="Random coffee picture" />
+
             <div className="card-header">
                 Member
               </div>
