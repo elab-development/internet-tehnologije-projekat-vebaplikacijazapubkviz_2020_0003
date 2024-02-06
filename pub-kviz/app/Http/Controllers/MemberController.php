@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\MemberResource;
+use DB;
 
 class MemberController extends Controller
 {
@@ -83,7 +84,8 @@ class MemberController extends Controller
     public function update(Request $request, $member_id)
     {
         
-        //
+        try {
+            DB::beginTransaction();
         $validator=Validator::make($request->all(),[ 
             'first_name'=>'required|string|max:50',
             'last_name'=>'required|string|max:50'
@@ -98,7 +100,7 @@ class MemberController extends Controller
         $this->authorize('update', $member);
 
         if (is_null($member)) {
-           
+            DB::rollBack(); 
             return response()->json('Data not found', 404);
            
         }
@@ -108,7 +110,14 @@ class MemberController extends Controller
 
 
         $member->update();
+        DB::commit();
+
         return response()->json($member);
+    } catch (e) {
+        DB::rollBack();
+ 
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
     }
 
     /**
