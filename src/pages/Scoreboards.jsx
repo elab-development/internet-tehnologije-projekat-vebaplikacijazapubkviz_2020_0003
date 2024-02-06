@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react'
 import useData from '../useData'
 import { Chart } from 'react-google-charts';
+import { useState } from 'react';
 
 const Scoreboards = () => {
     const scoreboardsDB=useData("api/scoreboards");
     
 
-    const chartData = [['Team', 'Index']];
-    scoreboardsDB.forEach((scoreboard) => {
-      chartData.push([scoreboard.team, scoreboard.index]);
-    });
-
+    const [chartData, setChartData] = useState([['Team', 'Index']]);
+ 
+    useEffect(() => {
+        if (scoreboardsDB) {
+            const newChartData = [['Team', 'Index']];
+            scoreboardsDB.forEach((scoreboard) => {
+                newChartData.push([scoreboard.team, scoreboard.index]);
+            });
+            setChartData(newChartData);
+        }
+    }, [scoreboardsDB]);
     return (
         <div>
       {scoreboardsDB === null ? (

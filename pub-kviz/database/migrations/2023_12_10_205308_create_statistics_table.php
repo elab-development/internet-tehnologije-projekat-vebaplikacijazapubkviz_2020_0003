@@ -37,7 +37,17 @@ return new class extends Migration
         
         DB::statement('UPDATE scoreboards sc INNER JOIN `statistics` st ON (sc.season_id=st.season_id) SET sc.correct_total=sc.correct_total+st.correct,sc.incorrect_total=sc.incorrect_total+st.incorrect,sc.index=sc.correct_total-sc.incorrect_total');
         DB::statement('ALTER TABLE statistics ADD CONSTRAINT check_number_of_questions CHECK (correct+incorrect=15);');
-         
+        
+        DB::unprepared('
+        CREATE TRIGGER trg_update_scoreboard
+        AFTER INSERT ON statistics
+        FOR EACH ROW
+        BEGIN
+            UPDATE scoreboards sc
+            SET sc.correct_total = sc.correct_total + NEW.correct, sc.incorrect_total = sc.incorrect_total + NEW.incorrect, sc.index = sc.correct_total - sc.incorrect_total
+            WHERE sc.season_id = NEW.season_id AND sc.user_id = NEW.user_id;
+        END;
+        '); 
     }
 
     /**
