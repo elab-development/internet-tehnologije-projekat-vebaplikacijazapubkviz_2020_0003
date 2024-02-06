@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 use DB;
 
 class AuthController extends Controller
@@ -52,7 +53,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->input('email')) -> firstOrFail();
-        
+        $csrfToken = Crypt::encrypt(csrf_token());
         if($user->role!='admin'){
         DB::statement("UPDATE users SET role='loggedIn' WHERE id=$user->id");
         }
@@ -64,6 +65,7 @@ class AuthController extends Controller
             'message' => 'Hello, Team: ' . $user->name . ' welcome! Have a nice day!',
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'csrf_token' => $csrfToken,
             'role'=>$user->role
         ]);
     }

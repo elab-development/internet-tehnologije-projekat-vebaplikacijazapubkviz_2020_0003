@@ -35,6 +35,10 @@ const Login = ({addToken} ) => {
             "role",
             response.data.role
           );
+          window.sessionStorage.setItem(
+            "csrfToken",
+            response.data.csrf_token
+          );
           addToken(response.data.access_token);
           navigate("/");
         }

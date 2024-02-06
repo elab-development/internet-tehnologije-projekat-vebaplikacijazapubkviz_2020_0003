@@ -47,7 +47,9 @@ const Scoreboards = () => {
           </tbody>
         </table>
       )}
+       {chartData && chartData.length > 1 && (
       <Chart
+
             chartType="BarChart"
             data={chartData}
             options={{
@@ -57,7 +59,7 @@ const Scoreboards = () => {
             }}
             width="100%"
             height="400px"
-          />
+          />)}
     </div>
   );
 }

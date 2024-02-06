@@ -34,7 +34,7 @@ const Home = ({addToken,token}) => {
         window.sessionStorage.setItem("auth_token", null);
         window.sessionStorage.removeItem("role");
         window.sessionStorage.removeItem("auth_token");
-        
+        window.sessionStorage.removeItem("csrfToken");
         navigate("/");
       })
       
@@ -73,7 +73,7 @@ const Home = ({addToken,token}) => {
     //do ovde
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [amountOfQuestions, setAmountOfQuestions] = useState(3);
+
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
@@ -95,7 +95,7 @@ const Home = ({addToken,token}) => {
   const getQuestions = () => {
     axios.get(`https://opentdb.com/api.php`, {
       params: {
-        amount: amountOfQuestions,
+        amount: 3,
         category: selectedCategory,
         type: 'multiple',
       },
@@ -124,12 +124,14 @@ const Home = ({addToken,token}) => {
     }
 
     function deleteMember(){
+      if(window.sessionStorage.getItem("csrfToken")){
       let config = {
         method: 'delete',
         url: 'api/members/'+memberData.id+'/delete',
         headers: {
           Authorization: "Bearer " + window.sessionStorage.getItem("auth_token"),
         }
+      
       };
       
       axios.request(config)
@@ -141,8 +143,11 @@ const Home = ({addToken,token}) => {
         alert("Error while deleting member")
       });
     }
+  }
+
 
     function updateMember(){
+      if(window.sessionStorage.getItem("csrfToken")){
       let data=JSON.stringify({
         "first_name": memberData.first_name,
         "last_name": memberData.last_name
@@ -166,8 +171,10 @@ const Home = ({addToken,token}) => {
         alert("Error while updating member")
       });
     }
+  }
 
     function insertMember(){
+      if(window.sessionStorage.getItem("csrfToken")){
       let data=JSON.stringify({
         "first_name": memberData.first_name,
         "last_name": memberData.last_name
@@ -192,6 +199,7 @@ const Home = ({addToken,token}) => {
           alert("Error while inserting member")
         });
     }
+  }
     
     const coffeeImageUrl = 'https://source.unsplash.com/featured/?coffee';
 
