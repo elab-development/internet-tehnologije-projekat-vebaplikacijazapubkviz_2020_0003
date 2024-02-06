@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Policies;
-
+use App\Models\Member;
 use App\Models\User;
 
 class MemberPolicy
