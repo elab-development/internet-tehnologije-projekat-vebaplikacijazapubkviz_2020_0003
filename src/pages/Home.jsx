@@ -224,7 +224,7 @@ const Home = ({addToken,token}) => {
     return (
       
         <div>
-           {window.sessionStorage.getItem("auth_token")===null?
+           {window.sessionStorage.getItem("auth_token")===null||window.sessionStorage.getItem("role")==="loggedOut"?
             (<Login addToken={addToken} />) : (<div>
               
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
